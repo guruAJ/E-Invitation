@@ -1,0 +1,107 @@
+﻿@model E_Invitation.Models.ECard
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/DeveloperJS/ECard.js?v1"></script>
+<div class="content-wrapper">
+    <div class="row">
+     <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <h4 class="card-title">E-Card Images Details</h4>
+                        
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="">
+                            
+                          @Html.DropDownList("OcassionId", new SelectList(ViewBag.GetAllOcassionData, "Id", "OcassionName"), new { @class = "form-control" })
+                        </div>
+
+                         <button type="button" class="btn btn-primary btn-sm" id="btnAddNew" >Add E-Card Images</button>
+                    </div>
+                    <div class="text-danger">@ViewBag.Deletemessage</div>
+                    @*<p class="card-description">
+                        All Category
+                    </p>*@
+                    @{
+                        await Html.RenderPartialAsync("View");
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="AddNew" data-backdrop="static">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <span class="d-none" id="editid">
+                @TempData["Id"]
+
+            </span>
+
+            <div class="modal-body p-0 h-100 custom-modal">
+                <button type="button" id="submit" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <div class="row h-100 mr-0">
+                    <div class="col-lg-3 d-none d-lg-block">
+                        <div class="left-modal-block">
+                            <div class="image-block">
+                                <img src="/Images/notepad.png" />
+                            </div>
+                            <p class="text-white text-font2 mt-4">Please fill all fields to add detail</p>
+                            <span class="btn btn-dark circle-icon-btn mt-1"><i class="mdi mdi-chevron-double-right"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="px-4 px-sm-3 pb-5 pt-4 inner-block">
+                            <h3 class="modal-title text-blue mb-2" id="addModalTitle"> Add New Vacancy</h3>
+                            <p class="mb-3 f13"> All fields are mandatory</p>
+                            <div class="">
+
+                            <span class="text-danger mb-2" id="spanmsg"></span>  
+           
+            <div class="form-group d-flex">
+               @* <label asp-for="Card1" class="control-label"></label>
+                <input asp-for="Card1" class="form-control" />
+                <span asp-validation-for="Card1" class="text-danger"></span>*@
+                <span class="d-none" id="spnInsId"></span>
+                <div class="imgUp1 mt-2">
+                    <div class="imagePreview1"></div>
+                    <label class="btn-ImageUpload" style="width: 250px;height: 30px;background-color:red;color:white">
+                        Upload Cover Page
+                        <input type="file" class="uploadFile1 img1" value="Upload Cover Page" style="width: 00px;height: 0px;overflow: hidden;"></label>
+                    </div><span id="spnimage1" class="d-none"></span>
+           
+                <div class="imgUp2 mt-2 ml-2">
+                    <div class="imagePreview2"></div>
+                    <label class="btn-ImageUpload" style="width: 250px;height: 30px;background-color:red;color:white">
+                        Upload Back Page
+                        <input type="file" class="uploadFile2 img2" value="Upload Back Page" style="width: 00px;height: 0px;overflow: hidden;"></label>
+                    </div><span id="spnimage2" class="d-none"></span>
+            
+                <div class="imgUp3 mt-2 ml-2">
+                    <div class="imagePreview3"></div>
+                    <label class="btn-ImageUpload" style="width: 250px;height: 30px;background-color:red;color:white">
+                        Upload Root Info
+                        <input type="file" class="uploadFile3 img3" value="Upload Root Info" style="width: 00px;height: 0px;overflow: hidden;"></label>
+                    </div><span id="spnimage3" class="d-none"></span>
+            </div>
+            <div class="form-group">
+                <input type="button" id="btnsave" value="Save" class="btn btn-primary" />
+            </div>
+      
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

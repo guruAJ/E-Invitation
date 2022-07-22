@@ -1,0 +1,114 @@
+﻿@model E_Invitation.Models.Category
+
+<script>
+    function myFunction(Id) {
+
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to delete!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, save it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    url: '/Category/Delete',
+                    type: 'POST',
+                    data: { "Id": Id }, //get the search string
+                    success: function (response) {
+                        console.log(response);
+                        if (response) {  // check if data is defined
+                            if (response != null) {
+                                if (response == 1) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Record Deleted successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    setTimeout(function () { window.location.replace("/Category/Index"); }, 1500)
+
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        })
+
+
+
+        }
+
+
+</script>
+
+<div class="content-wrapper">
+    <div class="row">
+        @if (ViewBag.add == true)
+        {
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+                <a asp-action="isSuccess" asp-route-id="false" class="close text-danger text-right"> &times;</a>
+                <div class="card-body">
+                    <h4 class="card-title">Create Category</h4>
+                    <p class="card-description">
+                        Fill Category
+                    </p>
+                    <form asp-action="Save">
+                        <div class="text-danger">@ViewBag.message</div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        }
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <h4 class="card-title">Category Details</h4>
+                        
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="">
+                            @{
+                                var item1 = (IEnumerable<E_Invitation.Models.Category>)ViewBag.AllData;
+
+                            }
+                          @*  Total <span id="lblTotal" class="ml-3 border border-secondary b px-2 py-1">@item1.Count()</span>*@
+                        </div>
+                        <a asp-action="isSuccess" asp-route-id="true" class="btn btn-primary btn-sm">Add Category</a>
+
+                    </div>
+                    <div class="text-danger">@ViewBag.Deletemessage</div>
+                    @*<p class="card-description">
+                        All Category
+                    </p>*@
+                    @{
+                        await Html.RenderPartialAsync("GetAll");
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

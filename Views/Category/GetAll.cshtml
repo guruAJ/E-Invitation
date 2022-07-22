@@ -1,0 +1,40 @@
+﻿@model E_Invitation.Models.Category
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> S/No</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0;
+        }
+        @foreach (var item in (IEnumerable<E_Invitation.Models.Category>)ViewBag.AllData)
+        {
+            count++;
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Id)*@
+                    <span>@count</span>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td>
+                    <a asp-action="index" asp-route-id="@item.Id" class="btn btn-outline-primary btn-fw"><i class="mdi mdi-grease-pencil"></i></a>
+                    @*<a class="btn btn-outline-danger btn-fw" id="btnDelete" onclick="myFunction(@item.Id)">Delete</a>*@
+                    @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

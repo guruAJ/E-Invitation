@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-wrapper">
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                          <h3 class="font-weight-bold" style="text-align: center;margin-top: -43px;"><b><u>CLOSED EVENT</u></b> </h3>
+                    <div class="d-flex justify-content-between mb-2 mt-4">
+                       @* <div class="">*@
+                           @* <h4 class="card-title"></h4>*@
+                            @*  Total <span id="lblTotal" class="ml-3 border border-secondary b px-2 py-1"></span>*@
+                     @*   </div>*@
+
+                        <div class="d-flex justify-content-between">
+                            @* <b>Please Select Event</b><span>*@
+                            @Html.DropDownList("OcassionFilterId", new SelectList(ViewBag.AllOcassion, "Id", "OcassionName"), new { @class = "form-control form-control-sm ml-2" })
+                        
+                             @* <b>Please Select User</b><span>*@
+                            @*    @Html.DropDownList("UserId", new SelectList(ViewBag.AllUser, "Id", "UserName"), new { @class = "form-control" })*@
+                            <select class="form-control form-control-sm ml-2 d-none" required id="UserId">
+                            </select>
+                        </div>
+                        <div>
+                            <button type="button" id="btnstatus" class="btn btn-warning d-none">Finalise</button>
+                            <button type="button" id="btnstatus1" class="btn btn-danger d-none">Revoke finalise </button>
+                            <button type="button" id="btnAllstatus" class="btn btn-warning d-none">All Dte/Branch Finalise</button>
+                           
+                        </div>
+                    </div>
+                    <div class="table-responsive mb-3 mb-md-0 mt-3">
+                        <div class="table-responsive">
+
+                            <table class="table " id="tblData">
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<script src="~/DeveloperJS/VacancyReport.js"></script>

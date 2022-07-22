@@ -1,0 +1,55 @@
+﻿@model E_Invitation.Models.VacancyPlan
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/DeveloperJS/VacancyPlanUser.js"></script>
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between mb-1">
+                <div class="">
+                    <h4 class="card-title">Vacancy Plan</h4>
+                    @*  Total <span id="lblTotal" class="ml-3 border border-secondary b px-2 py-1"></span>*@
+                </div>
+
+                <div>
+                    @Html.DropDownList("OcassionFilterId", new SelectList(ViewBag.AllOcassion, "Id", "OcassionName"), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+
+
+
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered " id="tblData">
+                            @*table-striped*@
+                        </table>
+
+
+                        @*<input type="text" placeholder="" width="20" value="" />*@
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered " id="tblData1">
+                            @*table-striped*@
+                        </table>
+                        @*<input type="text" placeholder="" width="20" value="" />*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

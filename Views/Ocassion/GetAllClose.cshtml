@@ -1,0 +1,56 @@
+﻿@using System.Globalization
+@model E_Invitation.Models.Ocassion
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+        <table class="table  display nowrap text-center tblDetail" id="">
+            <thead>
+                <tr>
+                    <th>
+                        S/No
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OcassionName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OcassionDate)
+                    </th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count1 = 0;
+                    string date1 = "";
+                }
+                @foreach (var item in (IEnumerable<E_Invitation.Models.Ocassion>)ViewBag.GetAllClose)
+                {
+                    count1++;
+                <tr>
+                    <td>
+                        <span class="spnid d-none">@item.Id</span>
+                        <span>@count1</span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OcassionName)
+                    </td>
+                    
+                    <td>
+                      
+                        <span class="OcassionDate">@item.OcassionDate.ToString("dd/MM/yyyy").Replace("12:00:00 AM", "").Replace("-","/")</span>
+                    </td>
+                   
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+   

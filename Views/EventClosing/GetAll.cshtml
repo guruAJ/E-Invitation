@@ -1,0 +1,99 @@
+﻿@model E_Invitation.Models.Ocassion
+<div class="table-responsive">
+    <table class="table  display nowrap text-center tblDetail" id="">
+        <thead>
+            <tr>
+                <th>
+                    S/No
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OcassionName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OcassionDate)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.IsFinish)
+                </th>
+
+
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int count = 0;
+                string date = "";
+            }
+            @foreach (var item in (IEnumerable<E_Invitation.Models.Ocassion>)ViewBag.AllData)
+            {
+                count++;
+                <tr>
+                    <td>
+                        <span class="spnid d-none">@item.Id</span>
+                        <span>@count</span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OcassionName)
+                    </td>
+
+                    <td>
+
+                        <span class="OcassionDate">@item.OcassionDate.ToString("dd/MM/yyyy").Replace("12:00:00 AM", "").Replace("-","/")</span>
+                    </td>
+
+
+                    @*   <td>
+                        @if (item.IsLock == false)
+                        {
+                        <button class="badge badge-success UnLock">Pass Not Generated</button>
+                        }
+                        else
+                        {
+                        <button class="badge badge-danger Locked" style="padding-right:33px;">Pass Generated</button>
+                        }
+
+                        </td>*@
+
+
+
+
+                    <td>
+                        @if (item.IsFinish == false)
+                        {
+                            <button class="badge badge-success Runing">Under Progress</button>
+                        }
+                        else
+                        {
+                            <button class="badge badge-danger Finished">Complete</button>
+                        }
+
+                    </td>
+
+
+                    <td>
+
+                            @if (item.IsFinish == false)
+                        {
+
+                            <a asp-action="index" asp-route-id="@item.Id" class="btn btn-outline-primary btn-fw"> <i class="mdi mdi-grease-pencil"></i></a>
+                            @*<button class="badge badge-success Runing">Under Progress</button>*@
+                        }
+                        else
+                        {
+                             <a asp-action="index" asp-route-id="@item.Id" class="btn btn-outline-warning btn-fw"  style="pointer-events: none"> <i class="mdi mdi-grease-pencil"></i></a>
+                            @*<button class="badge badge-danger Finished">Complete</button>*@
+                        }
+
+                       
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/DeveloperJS/Ocassion.js"></script>

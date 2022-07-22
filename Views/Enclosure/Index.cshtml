@@ -1,0 +1,141 @@
+﻿@model E_Invitation.Models.Enclosure
+
+@{
+    ViewData["Title"] = "Enclosure";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #ColorCode {
+        height: 105px;
+        width: 105px;
+        background-color: #bbb;
+      
+        display: inline-block;
+    }
+</style>
+
+
+<div class="content-wrapper">
+    <div class="row">
+        @*<div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Create Enclosure</h4>
+                    <p class="card-description">
+                        Fill Enclosure
+                    </p>
+                    <form asp-action="Save">
+                        <div class="text-danger">@ViewBag.message</div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" placeholder="Enter Enclosure" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label  class="control-label"> Select Color</label>
+                            <input asp-for="ColorCode" type="color" class="" />
+                            <span asp-validation-for="ColorCode" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>*@
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Enclosure Details</h4>
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="">
+                            @{
+                                var item1 = (IEnumerable<E_Invitation.Models.Enclosure>)ViewBag.AllData;
+                            }
+                         @*   Total <span id="lblTotal" class="ml-3 border border-secondary b px-2 py-1">@item1.Count()</span>*@
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnAddNew">Add Enclosure </button>
+                    </div>
+                    <div class="text-danger" id="">@ViewBag.Deletemessage</div>
+                    @*<p class="card-description">
+                        All Enclosure
+                    </p>*@
+                    @{
+                        await Html.RenderPartialAsync("View");
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="AddNew" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <span class="d-none" id="editid">
+                @TempData["Id"]
+
+            </span>
+
+            <div class="modal-body p-0 h-100 custom-modal">
+                <button type="button" id="submit" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <div class="row h-100 mr-0">
+                    <div class="col-lg-3 d-none d-lg-block">
+                        <div class="left-modal-block">
+                            <div class="image-block">
+                                <img src="/Images/notepad.png" />
+                            </div>
+                            <p class="text-white text-font2 mt-4">Please fill all fields to add detail</p>
+                            <span class="btn btn-dark circle-icon-btn mt-1"><i class="mdi mdi-chevron-double-right"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="px-4 px-sm-3 pb-5 pt-4 inner-block">
+                            <h3 class="modal-title text-blue mb-2" id="addModalTitle"> Add New Enclosure</h3>
+                            <p class="mb-3 f13"> All fields are mandatory</p>
+                            <div class="">
+
+                                <form asp-action="Save">
+                                    <div class="text-danger" id="spnmessage">@ViewBag.message</div>
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="form-group">
+                                        <label asp-for="Title" class="control-label"></label>
+                                        <input asp-for="Title" class="form-control" placeholder="Enter Enclosure" />
+                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label"> Select Color</label>
+                                        <input asp-for="ColorCode" type="color" class="" />
+                                        <span asp-validation-for="ColorCode" class="text-danger"></span>
+                                    </div>
+                                    
+
+                                    <div class="text-right mt-3">
+                                        <button type="submit" id="btnSubmit" class="btn btn-outline-info">Submit</button>
+
+                                        <input type="button" value="Reset" id="btnReset" class="btn btn-outline-primary" />
+
+
+                                    </div>
+                                </form>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script src="~/DeveloperJS/Enclosure.js"></script>

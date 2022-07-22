@@ -1,0 +1,56 @@
+-- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+--
+-- Host: localhost    Database: e_invitaion
+-- ------------------------------------------------------
+-- Server version	8.0.28
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `enclosures`
+--
+
+DROP TABLE IF EXISTS `enclosures`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `enclosures` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `Title` varchar(200) NOT NULL,
+  `ColorCode` text NOT NULL,
+  `CreatedOn` datetime NOT NULL,
+  `UpdatedOn` datetime NOT NULL,
+  `IsActive` int NOT NULL,
+  `CreatedBy` int NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `enclosures`
+--
+
+LOCK TABLES `enclosures` WRITE;
+/*!40000 ALTER TABLE `enclosures` DISABLE KEYS */;
+INSERT INTO `enclosures` VALUES (1,'V1+','#d80e0e','0001-01-01 00:00:00','2022-04-11 11:37:13',1,0),(2,'V1','#276a77','0001-01-01 00:00:00','2022-04-19 16:05:54',1,0),(3,'V2+','#1c09f1','0001-01-01 00:00:00','2022-04-07 11:29:52',1,0),(4,'V3','#f10990','0001-01-01 00:00:00','2022-04-01 13:02:17',1,0),(5,'V4','#a112ab','0001-01-01 00:00:00','2022-04-19 17:07:27',1,0),(6,'V5','#230b22','0001-01-01 00:00:00','2022-04-11 11:37:23',1,0),(7,'v8','#581313','0001-01-01 00:00:00','2022-04-19 12:34:07',1,0);
+/*!40000 ALTER TABLE `enclosures` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-04-21 16:14:57

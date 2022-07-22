@@ -1,0 +1,112 @@
+﻿@model E_Invitation.DTO.Login
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Index";
+}
+
+<script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+
+</script>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>E-Invitaion</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">-->
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="/Fonts/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,300,400,600,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  
+    <link href="~/css/login.css" rel="stylesheet" />
+   
+</head>
+<body>
+    <section class="Login-wrapper">
+        <!-- Animation Start Here -->
+        <div id="particles-js"></div>
+        <!-- Animation End Here -->
+        <div class="container-fluid">
+
+            <div class="row align-items-center justify-content-center">
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+                    <div class="p-2 bg-white error-msg mb-2 d-none" id="error-msg">
+                    </div>
+                    <div class="align-items-center bg-dark-login no-gutters row">
+                        <div class="col-sm-5 h-100">
+                            <div class="login-block">
+                                <div class="login-head mb-0">
+                                    <a href="#" class="logo"><img src="/Images/logo.png" alt="Logo"></a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-7 h-100">
+
+                            <div class="login-form">
+
+                                @*<div>
+
+
+                                    <div class="form-group">
+                                        <label>Login Id</label>
+                                        <input class="form-control" id="txtUserId" placeholder="Enter your Login Id" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input class="form-control" id="txtPwd" placeholder="Enter your password" type="password">
+                                    </div>
+                                    <button type="button" id="btnLogin" class="btn login-btn btn-block">Login</button>
+                                </div>*@
+                          
+                                        <form asp-action="Validate">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                           
+                                           
+                                            <div class="form-group">
+                                                <label asp-for="UserName" class="control-label"></label>
+                                                <input asp-for="UserName" class="form-control" value="Admin" placeholder="Enter UserName" />
+                                                <span asp-validation-for="UserName" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Password" class="control-label"></label>
+                                                <input asp-for="Password" class="form-control" value="Admin123!" placeholder="Enter Password"/>
+                                                <span asp-validation-for="Password" class="text-danger"></span>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <input type="submit" value="Login" class="btn login-btn btn-block" />
+                                            </div>
+                                        </form>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     
+    </section>
+    
+  
+
+    <script src="~/js/imagesloaded.pkgd.min.js"></script>
+
+    <script src="/js/particles.min.js"></script>
+
+    <script src="/js/particles-1.js"></script>
+
+</body>
+</html>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,133 @@
+﻿@model E_Invitation.Models.VacancyPlan
+
+@{
+    ViewData["Title"] = "Vacancy Plan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/DeveloperJS/VacancyPlan.js"></script>
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between mb-1">
+
+                <div class="row">
+
+                    <div class="col-12">
+
+
+                        <h3 class="font-weight-bold" style="text-align:center;"><b><u style="margin-left:447px;">ALLOT VACANCY </u></b> </h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                           @* <b>Please Select Event</b> <span>*@
+                                @Html.DropDownList("OcassionFilterId", new SelectList(ViewBag.AllOcassion, "Id", "OcassionName"), new { @class = "form-control" })
+                           
+                        </div>
+                        <div class="col-md-3">
+                         <input type="button" id="btnMultiSend" class='btn btn-outline-primary' value="Add Dte/Br">
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="card-body d-none" id="mapping">
+
+       
+
+
+
+
+
+
+            @*<span>
+                <input type="button" id="enableall" class='btn btn-outline-primary' value="Enable All">
+                <input type="button" id="desebleall" class='btn btn-outline-danger' value="Disable All">
+
+                </span>*@
+            <div class="table-responsive">
+                @*<table class="table table-bordered table-striped" >*@
+                    <table class="table border border-purple table-striped display nowrap text-center" id="tbl_tbl_Detail">
+                    <thead>
+                        <tr>
+                            <th class="noExport d-none">Select</th>
+                            <th class="noExport">
+                                <div class="custom-control custom-checkbox small">
+
+                                    <input type="checkbox" class="custom-control-input" id="chkAll">
+                                    <label class="custom-control-label font-weight-bold" for="chkAll"></label>
+                                </div>
+                            </th>
+                            <th class="wd-30-f" style="width: 204px;">S/No</th>
+                            <th>
+                               Dte/Br/Fmn
+                            </th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="DetailBody">
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="row">
+@*
+                 <div class="d-flex ml-4">
+                      <input type="checkbox" class="mt-1 font-weight-bold" id="autosave" name="autosave" value="autosave">
+                      <label for="vehicle1" class="ml-4"> Auto Save</label><br>
+                 </div>*@
+                 <div class="custom-control custom-checkbox small ml-4">
+
+                   <input type="checkbox" class="custom-control-input" id="autosave">
+                   <label class="custom-control-label font-weight-bold" for="autosave">Auto Save</label>
+                  </div>
+                <div class="col-md-12 mt-2">
+                    <div class="table-responsive">
+                        <table class="table table-bordered display nowrap text-center" id="tblData">
+                            @*table-striped*@
+                        </table>
+
+
+                        @*<input type="text" placeholder="" width="20" value="" />*@
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    
+                    <div class="table-responsive">
+
+                        <table class="table display nowrap text-center"  id="tblData1">
+                            @*table-striped*@
+                        </table>
+                        @*<input type="text" placeholder="" width="20" value="" />*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+    }

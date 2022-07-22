@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" id="Rank"></h4>
+                    @*<h4 class="card-title" id="Vencancy"></h4>*@
+                   
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class='btn btn-icon-text '>
+
+                            Total <span id="lblTotal" class="ml-10 border border-secondary b px-2 py-1 "></span>
+                        </div>
+
+                    </div>
+                    <div class="table-responsive mb-3 mb-md-0 mt-3">
+                        <div class="table-responsive">
+
+                            <table class="table display nowrap text-center " id="tblData">
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/DeveloperJS/GestList.js"></script>
+

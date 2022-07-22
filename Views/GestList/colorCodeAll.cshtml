@@ -1,0 +1,325 @@
+﻿@model IEnumerable<E_Invitation.DTO.DTOGestPass>
+@{
+
+    Layout = null;
+}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>E-Invitaion</title>
+    <!-- plugins:css -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/js/feather.min.js"></script>
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/images/favicon.png" />
+    <script src="~/lib/jquery/jquery.min.js"></script>
+
+</head>
+<script>
+    window.onload = function () {
+        document.getElementById('printa').click();
+    }
+
+
+</script>
+<style media="print">
+
+    .line {
+        border: 1px solid #0e8c83 !important;
+        background: #c5e3e1 !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .title {
+        color: #fff !important;
+        background: #0e8c83 !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .value {
+        width: 90%;
+        border: 1px solid #bdbdbd !important;
+        background: #f3f3f3 !important;
+        -webkit-print-color-adjust: exact;
+    }
+</style>
+<style type="text/css" media="print">
+    div.page {
+        page-break-after: always; /* depreciating, use break-after */
+        break-after: page;
+        height: 0px;
+        display: block !important;
+    }
+
+    .page-break-clear {
+        clear: both;
+    }
+
+    footer {
+        page-break-after: always;
+    }
+
+    .encol {
+        background-color: #1a4567 !important;
+        -webkit-print-color-adjust: exact;
+    }
+</style>
+
+<body style="border: none;">
+    <div class="content-wrapper" style="padding-left:150px;padding-right:150px;border:none;">
+
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card" style="border: none;">
+
+                    <div class="card-header text-center d-print-none">
+                        @*<a href="@Url.Action("Index", "Interview")" class="btn btn-primary btn-sm ">Go Back</a>*@
+                        <button type="button" onclick="javascript:window.print()" class="btn btn-success btn-sm " id="printa">Print</button>
+                        <h5 class="mb-0 text-purple">Please print </h5>
+                    </div>
+                    <table class="table table-borderless nobg">
+
+                        @foreach (var item in Model)
+                        {
+                            <thead>
+                                <tr>
+                                    <th class="p-0">
+                                        <table class="table table-borderless mb-0">
+                                            <tr>
+
+                                                <th class="text-center word-break">
+
+                                                </th>
+
+                                            </tr>
+                                        </table>
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <br /><br /><br /><br /> <br /><br /><br /><br /> <br /><br /><br /><br />
+                                        <table class="table table-borderless nobg mt-3">
+
+                                            <thead>
+                                                <tr>
+                                                    <td class="p-0">
+                                                        <table class="table table-borderless mb-0" style="background-color:white">
+                                                            @*<tr>
+                                <td class="text-center">
+                                    <img src="~/images/Profile/@item.Photo" height="250px" class="text-center" />
+                                </td>
+
+                                <td class="text-center">
+                                        <img src="~/images/qrcode.png" height="250px" class="text-center" />
+                                    </td>
+                                <td class="text-center">
+                                    <img src="~/images/armylogo.jpg" height="250px" class="text-center" />
+                                </td>
+                            </tr>*@
+                                                            <tr>
+                                                                @*<td class="text-center">
+                                    <img src="~/images/armylogo.jpg" height="250px" class="text-center" />
+                                </td>*@
+
+                                                                <td class="text-center encol">
+
+                                                                    @*<span style="background-color: @item.EnclosureColor; color: white; " class="text-center align-middle">
+                                        <br /><br /><br /><br />
+                                        <span class="font-weight-800 f27">@item.EnclosureName</span>
+                                        <br /><br />
+                                        <span style="color:white">@item.OcassionName</span>
+                                    </span>*@
+
+                                                                    <div style="background-color: @item.EnclosureColor; height: 550px;">
+                                                                        <br /><br /><br /><br /> <br /><br /><br /><br /> <br /><br /><br /><br />
+                                                                        <h1 class="font-weight-800 f27"> @item.EnclosureName</h1>
+                                                                        <h3>@item.OcassionName</h3>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </thead>
+
+
+
+                                        </table>
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <table class="table table-borderless mb-0">
+                                                            <tr class="text-center">
+                                                                <td>
+                                                                    <p class="text-left mb-0 b text-black">
+                                                                        <h1 style="font-family:Gabriola; font-size:50px;font-weight:900">
+                                                                            General   @item.ChiefName
+                                                                            <small style="font-family:Gabriola; font-size:10px;font-weight:900">
+                                                                                PVSM, AVSM, SM, VSM, ADC
+                                                                            </small>
+                                                                        </h1>
+                                                                    </p>
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr class="text-center">
+
+                                                                <td><p class="text-right mb-0 b text-black"> <h1 style="font-family: Gabriola; font-size: 40px; font-weight: 900; line-height:20px">Chief of the Army Staff</h1></p></td>
+                                                            </tr>
+                                                            <tr class="text-center">
+
+                                                                <td><p class="text-right mb-0 b text-black"><h1 style="font-family: Gabriola; font-size: 30px; font-weight: 900; line-height:30px">and all Ranks of the Army</h1> </p></td>
+                                                            </tr>
+                                                            <tr class="text-center">
+
+                                                                <td><p class="text-right mb-0 b text-black"> <h1 style="font-family: Gabriola; font-size: 30px; font-weight: 900; line-height:5px">request the company of</h1> </p></td>
+                                                            </tr>
+                                                            <tr class="text-center">
+
+                                                                <td><p class="text-right mb-0 b text-black"> <h1 style="font-family:Gabriola; font-size:40px;font-weight:900;margin-top:20px">@item.NameOfGest</h1> </p></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        @*<table class="table table-borderless">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table class="table table-borderless mb-0">
+
+                                                            <tr class="text-center">
+
+                                                                <td>
+                                                                    <table class="table table-borderless">
+
+                                                                        <tr class="text-left">
+
+                                                                            <td>
+                                                                                <h6 style="font-family: Arial; font-size: 11px; font-weight: 900; line-height:10px">@item.ContactName</h6>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="text-left">
+                                                                            <td>
+                                                                                <h6 style="font-family: Arial; font-size: 10px; font-weight: 900; line-height:10px">@item.IssueBranch</h6>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="text-left">
+                                                                            <td>
+                                                                                <h6 style="font-family: Arial; font-size: 10px; font-weight: 900; line-height:10px">Tele: @item.PhoneNo</h6>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="text-left">
+                                                                            <td>
+                                                                                <h6 style="font-family: Arial; font-size: 10px; font-weight: 900; line-height:10px">ASCON: @item.ASCON</h6>
+                                                                            </td>
+
+
+                                                                        </tr>
+
+                                                                    </table>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <table class="table table-borderless">
+
+                                                                        <tr class="text-left ">
+
+                                                                            <td>
+                                                                                <h6 style="font-family: Arial; font-size: 12px; font-weight: 600; line-height:10px">Venue : @item.Venue</h6>
+                                                                            </td>
+
+                                                                        </tr>
+                                                                        <tr class="text-left">
+
+                                                                            <td>
+                                                                                <h6 style="font-family: Arial; font-size: 12px; font-weight: 600; line-height:10px">Time : @item.Time</h6>
+                                                                            </td>
+
+                                                                        </tr>
+                                                                        <tr class="text-left">
+
+                                                                            <td>
+                                                                                Dress
+                                                                                <div style="font-family: Arial; font-size: 12px; font-weight: 600; line-height:10px">
+
+                                                                                    <ul class="list-star" style="font-family: Arial; font-size: 12px; font-weight: 600; line-height:15px">
+                                                                                        <li>Service Officer : @item.Dress</li>
+                                                                                        <li>Civilian Officers : @item.Dress1</li>
+                                                                                        <li>(Medals may be worn by Veterans)</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </td>
+
+                                                                        </tr>
+
+                                                                    </table>
+                                                                </td>
+
+
+                                                            </tr>
+
+
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <table class="table table-borderless">
+
+                                            <tr class="text-left">
+
+                                                <td>
+                                                    <h6 style="font-family: Arial; font-size: 12px; font-weight: 600; line-height:10px" class="ml-3"> Note :</h6>
+                                                </td>
+
+                                            </tr>
+                                            <tr class="text-left ">
+
+                                                <td>
+                                                    <ul style="font-family: Arial; font-size: 12px; font-weight: 600; line-height:15px">
+                                                        <li> Hard copy of Card is not required. Pl carry your valid ID proof (as mentioned in your application) for identification.</li>
+                                                        <li>
+                                                            This Pass will also be used for your veh parking.
+                                                        </li>
+                                                    </ul>
+                                                </td>
+
+                                            </tr>
+                                            <tr class="text-left ">
+                                                <td>
+                                                    <h2>Appl devp by ASDC, DGIS </h2>
+                                                </td>
+                                            </tr>
+                                        </table>*@
+
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        }
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+
+@*<script src="~/DeveloperJS/PassGen.js"></script>*@

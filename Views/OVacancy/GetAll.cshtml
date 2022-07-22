@@ -1,0 +1,154 @@
+﻿@model E_Invitation.Models.Vacancy
+<div class="row mb-2">
+<div class="col-md-10">
+    @{
+        int count1 = 0;
+    }
+    @if (ViewBag.EnclosureCount != null)
+    {
+
+        <div class="row">
+            @{
+                int tot = 0;
+
+            }
+
+            @foreach (var item1 in (IEnumerable<E_Invitation.Models.EnclosureCount>)ViewBag.EnclosureCount)
+            {
+                tot = tot + item1.Total;
+                count1 = 1;
+                <div class="card mr-1 mb-2" style="background-color:@item1.Color;color:white">
+                    <div class="card-body1">
+                        <p class="mb-2">@item1.Title</p>
+                        <p class="fs-10">@item1.Total</p>
+
+                    </div>
+                </div>
+
+
+            }
+            @if (count1 == 1)
+            {
+                <div class="card ml-5 mb-2 text-right" style="background-color:green;color:white;">
+                    <div class="card-body1">
+                        <p class="mb-2">Total</p>
+                        <p class="fs-10">@tot</p>
+
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+<div class="col-md-2">
+
+   <div class="row">
+                        <span id="drop" class="d-none">@TempData["drop"]</span>
+                        <div class="">
+                            @{
+                                int cTotal = 0;
+                                if (TempData["OcassionId"] != null)
+                                {
+                                    var item1 = (IEnumerable<E_Invitation.Models.Vacancy>)TempData["OcassionId"];
+                                    cTotal = item1.Count();
+                                }
+                            }
+                            @*Total <span id="lblTotal" class="ml-3 border border-secondary b px-2 py-1">@cTotal</span>*@
+                        </div>
+                          <div class="col-md-12">
+                        @using (Html.BeginForm("GetAll", "OVacancy", FormMethod.Post))
+                        {
+                            @Html.DropDownList("OcassionFilterId", new SelectList(ViewBag.AllOcassion, "Id", "OcassionName"), new { onchange = "this.form.submit()" });
+                        }
+                        
+                          <button type="button" class="btn btn-primary btn-sm mt-2" id="btnAddNew">Add Vacancy</button>
+                         </div>
+   </div>
+</div>
+</div>
+<div class="table-responsive">
+    @*id="tblDetail"*@
+    <table class="table display nowrap text-center" id="tblDetail">
+        <thead>
+            <tr>
+                <th>
+                    S/No
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OcassionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EnclosureId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RankId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int count = 0;
+            }
+            @if (TempData["OcassionId"] != null)
+
+            {
+                @foreach (var item in (IEnumerable<E_Invitation.Models.Vacancy>)TempData["OcassionId"])
+                {
+                    ViewBag.ocassion = item.OcassionName;
+                    count++;
+                   
+                    <tr>
+                        <td>
+                            <span class="spnid d-none">@item.Id</span>
+                            <span>@count</span>
+                            @*@Html.DisplayFor(modelItem => item.Id)*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OcassionName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EnclosureName)
+                        </td>
+                        <td>
+                            
+                           @* @Html.DisplayFor(modelItem => item.CategoryName)*@
+
+                             
+                            @Html.DisplayFor(modelItem => item.RankDesc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RankName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+
+                        <td>
+                            @if (item.IsLock == false)
+                            {
+                                <a asp-action="index" asp-route-id="@item.Id"
+                                   class="btn btn-outline-primary btn-fw"> <i class="mdi mdi-grease-pencil"></i>
+                                </a>
+                                <span id="islock" hidden>0</span>
+                            }
+                            else
+                            {
+                                <span id="islock" hidden>1</span>
+                                <span id="" class="badge badge-warning">Locked</span>
+                            }
+                             @*<a class="btn btn-outline-danger btn-fw btnDelete" id="btnDelete"><i class="mdi mdi-delete icon-md"></i></a>*@
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

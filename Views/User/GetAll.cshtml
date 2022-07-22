@@ -1,0 +1,72 @@
+﻿@model E_Invitation.Models.User
+@using Microsoft.AspNetCore.Http;
+@using E_Invitation.Helpers;
+<div class="table-responsive">
+    <table class="table border border-purple table-striped" id="tblDetail">
+        <thead>
+            <tr>
+                <th>
+                    S/No
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>*@
+
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int count = 0;
+
+                User Logins = SessionHelper.GetObjectFromJson<User>(Context.Session, "User");
+
+
+            }
+            @foreach (var item in (IEnumerable<E_Invitation.Models.User>)ViewBag.AllData)
+            {
+                count++;
+                <tr>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Id)*@
+                        <span>@count</span>
+                    </td>
+
+
+                    <td>
+                        <span class="d-none spnid">@item.Id</span>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    @*<td>
+                       
+                        **************
+                    </td>*@
+
+                    <td>
+                        @*<a asp-action="index" asp-route-id="@item.Id" class="badge badge-warning">
+                            Edit
+                            <i class="ti-file btn-icon-append"></i>
+                        </a>*@
+                        @if (item.TypeId == 1)
+                        {
+                            <button class='btn btn-info btn-icon-text btn-sm mb-1 btnremAdmin'>Admin</button>
+                        }
+                        else if (item.GroupId == 1 && item.TypeId == 2 && Logins.GroupId==0)
+                        {
+                            <button class='btn btn-info btn-icon-text btn-sm mb-1 btnadmin'>Make Admin</button>
+                        }
+
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,93 @@
+﻿body {
+}
+.imagePreview {
+    width: 50px;
+    height: 50px;
+    background-position: center center;
+   /* background: url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);*/
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    box-shadow: 0px -3px 6px 2px rgba(0,0,0,0.2);
+}
+
+.btn-ImageUpload {
+    display: block;
+    border-radius: 0px;
+    text-align:center;
+    background-color:cornflowerblue;
+    font-size:12px;
+    color:white;
+    height:20px;
+     margin-top: -0px;
+    /*box-shadow: 2px 4px 6px 2px rgba(0,0,0,0.2);*/
+  
+}
+
+.imgUp .imagePreview {
+    margin-bottom: 1px;
+    background: url(/images/Profile/BlankProfile.jpg);
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.imgUp1 .imagePreview1 {
+    margin-bottom: 1px;
+    background: url(/images/Profile/BlankProfile.jpg);
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.imagePreview1 {
+    width: 250px;
+    height: 200px;
+    background-position: center center;
+    /* background: url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);*/
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: center;
+    box-shadow: 0px -3px 6px 2px rgba(0,0,0,0.2);
+}
+.imgUp2 .imagePreview2 {
+    margin-bottom: 1px;
+    background: url(/images/Profile/BlankProfile.jpg);
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.imagePreview2 {
+    width: 250px;
+    height: 200px;
+    background-position: center center;
+    /* background: url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);*/
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: center;
+    box-shadow: 0px -3px 6px 2px rgba(0,0,0,0.2);
+}
+.imgUp3 .imagePreview3 {
+    margin-bottom: 1px;
+    background: url(/images/Profile/BlankProfile.jpg);
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.imagePreview3 {
+    width: 250px;
+    height: 200px;
+    background-position: center center;
+    /* background: url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);*/
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: center;
+    box-shadow: 0px -3px 6px 2px rgba(0,0,0,0.2);
+}

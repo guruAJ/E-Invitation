@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "All Vacancy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">    
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                     <h3 class="font-weight-bold" style="text-align: center;margin-top: -43px;"><b><u>GUEST LIST VIEW</u></b> </h3>
+                    <div class="d-flex text-right mb-1" style="margin-top: 33px;">
+                     
+                      <div class="d-flex justify-content-between">
+                            @* <b>Please Select Event</b><span>*@
+                            @Html.DropDownList("OcassionFilterId", new SelectList(ViewBag.AllOcassion, "Id", "OcassionName"), new { @class = "form-control form-control-sm ml-2" })
+                        
+                             @* <b>Please Select User</b><span>*@
+                            @*    @Html.DropDownList("UserId", new SelectList(ViewBag.AllUser, "Id", "UserName"), new { @class = "form-control" })*@
+                            <select class="form-control form-control-sm ml-2 d-none" required id="UserId">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive mb-3 mb-md-0 mt-3">
+                        <div class="table-responsive">
+
+                             <table class="table display nowrap text-center" id="tblData">
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<script src="~/DeveloperJS/AllVacancy.js"></script>
